@@ -1,13 +1,13 @@
 import { ConfigProps } from "./types/config";
 
 const config = {
-  appName: "",
-  appDescription: "",
-  domainName: "",
+  appName: "ByteMason",
+  appDescription: "AI code agent",
+  domainName: "bytemason.com",
 
   auth: {
     loginUrl: "/signin",
-    callbackUrl: "/dashboard",
+    callbackUrl: "/",
   },
 
   theme: {
