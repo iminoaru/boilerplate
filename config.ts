@@ -7,7 +7,7 @@ const config = {
 
   auth: {
     loginUrl: "/signin",
-    callbackUrl: "/dashboard",
+    callbackUrl: "/",
   },
 
   theme: {
