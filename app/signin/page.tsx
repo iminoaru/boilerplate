@@ -57,14 +57,17 @@ export default function Login() {
   };
 
   return (
-    <main className="p-8 md:p-24">
-      <div className="text-center mb-4">
-        <Link href="/" className="btn btn-ghost btn-sm">
+    <main className="max-w-md mx-auto p-6 sm:p-8 md:p-12">
+      <div className="flex justify-center mb-6">
+        <Link 
+          href="/" 
+          className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 transition-colors"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
-            className="w-5 h-5"
+            className="w-5 h-5 mr-1"
           >
             <path
               fillRule="evenodd"
@@ -75,20 +78,19 @@ export default function Login() {
           Home
         </Link>
       </div>
-      <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-center mb-12">
-        Sign-in to {config.appName}{" "}
+      
+      <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-center mb-8">
+        Sign-in to {config.appName}
       </h1>
 
-      <div className="space-y-8 max-w-xl mx-auto">
+      <div className="space-y-6">
         <button
-          className="btn btn-block"
-          onClick={(e) =>
-            handleSignup(e, { type: "oauth", provider: "google" })
-          }
+          className="w-full flex items-center justify-center gap-3 bg-white text-gray-900 px-4 py-3 rounded-lg border hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          onClick={(e) => handleSignup(e, { type: "oauth", provider: "google" })}
           disabled={isLoading}
         >
           {isLoading ? (
-            <span className="loading loading-spinner loading-xs"></span>
+            <div className="w-5 h-5 border-2 border-gray-600 border-t-transparent rounded-full animate-spin" />
           ) : (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -116,12 +118,17 @@ export default function Login() {
           Sign-up with Google
         </button>
 
-        <div className="divider text-xs text-base-content/50 font-medium">
-          OR
+        <div className="relative py-2">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-200" />
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-white px-3 text-gray-500">Or</span>
+          </div>
         </div>
 
         <form
-          className="form-control w-full space-y-4"
+          className="space-y-4"
           onSubmit={(e) => handleSignup(e, { type: "magic_link" })}
         >
           <input
@@ -130,17 +137,17 @@ export default function Login() {
             value={email}
             autoComplete="email"
             placeholder="tom@cruise.com"
-            className="input input-bordered w-full placeholder:opacity-60"
+            className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all placeholder:text-gray-400"
             onChange={(e) => setEmail(e.target.value)}
           />
 
           <button
-            className="btn btn-primary btn-block"
+            className="w-full bg-orange-500 text-white px-4 py-3 rounded-lg hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
             disabled={isLoading || isDisabled}
             type="submit"
           >
             {isLoading && (
-              <span className="loading loading-spinner loading-xs"></span>
+              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
             )}
             Send Magic Link
           </button>
